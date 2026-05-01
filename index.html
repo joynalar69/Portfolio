@@ -507,13 +507,46 @@
       transform: translateY(-3px);
     }
 
-    /* Responsive */
+    /* ============================================
+       RESPONSIVE FIXES
+       ============================================ */
+    
+    /* Tablet Devices */
+    @media (max-width: 992px) {
+      .container {
+        padding: 70px 30px 50px;
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      .typing-text {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .grid-2, .grid-3, .grid-4 {
+        gap: 1.5rem;
+      }
+      .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+      .grid-4 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    }
+
+    /* Mobile Devices */
     @media (max-width: 768px) {
       .navbar {
-        padding: 0.8rem 4%;
+        padding: 0.8rem 5%;
       }
       .menu-btn {
         display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .logo {
+        font-size: 1.3rem;
       }
       .nav-links {
         position: fixed;
@@ -526,8 +559,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 1.5rem;
-        transition: right 0.3s ease;
+        gap: 1.8rem;
+        transition: right 0.3s ease-in-out;
         z-index: 998;
         box-shadow: -5px 0 30px rgba(0,0,0,0.3);
         padding: 80px 20px;
@@ -544,6 +577,10 @@
         padding: 12px;
         font-size: 1.1rem;
       }
+      
+      .hero {
+        min-height: 90vh;
+      }
       .hero h1 {
         font-size: 2.2rem;
       }
@@ -551,31 +588,116 @@
         font-size: 1.2rem;
         min-height: 60px;
       }
-      h2 {
-        font-size: 1.8rem;
+      .hero p {
+        font-size: 0.9rem;
+        padding: 0 10px;
       }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+        width: auto;
+        min-width: 180px;
+        justify-content: center;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
       .container {
-        padding: 60px 20px 40px;
+        padding: 50px 20px 40px;
       }
       section {
         padding: 40px 0;
       }
+      
       .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
         gap: 1.2rem;
       }
-      .btn {
-        padding: 10px 20px;
+      
+      .card, .company-card, .cert-card, .timeline-item, .value-card {
+        padding: 20px;
+      }
+      
+      .skill-category h3 {
+        font-size: 1.3rem;
+      }
+      .skill-info {
         font-size: 0.9rem;
+      }
+      
+      .timeline-item {
+        padding-left: 25px;
+      }
+      .timeline-item h3 {
+        font-size: 1.1rem;
+      }
+      .timeline-item p {
+        font-size: 0.85rem;
+      }
+      
+      .filter-buttons {
+        gap: 8px;
+        justify-content: center;
+      }
+      .filter-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.9rem;
+        word-break: break-word;
+      }
+      
+      .map-container iframe {
+        height: 250px;
+      }
+      
+      footer {
+        padding: 30px 15px;
+      }
+      .social-links {
+        gap: 18px;
+      }
+      .social-links a {
+        font-size: 1.2rem;
+      }
+      
+      .whatsapp-float {
+        width: 48px;
+        height: 48px;
+        font-size: 1.6rem;
+        bottom: 20px;
+        right: 20px;
+      }
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 85px;
+        right: 20px;
       }
     }
 
+    /* Small Mobile Devices */
     @media (max-width: 480px) {
-      .menu-btn {
-        font-size: 1.4rem;
+      .navbar {
+        padding: 0.7rem 5%;
       }
       .logo {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
+      .menu-btn {
+        font-size: 1.4rem;
+        right: 15px;
+      }
+      
       .hero h1 {
         font-size: 1.8rem;
       }
@@ -583,12 +705,116 @@
         font-size: 1rem;
         min-height: 50px;
       }
-      .btn {
-        padding: 8px 16px;
+      .hero p {
         font-size: 0.8rem;
       }
-      .grid-2, .grid-3, .grid-4 {
-        grid-template-columns: 1fr;
+      .btn {
+        padding: 8px 20px;
+        font-size: 0.8rem;
+        min-width: 160px;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+      
+      .container {
+        padding: 40px 15px 30px;
+      }
+      section {
+        padding: 30px 0;
+      }
+      
+      .card, .company-card, .cert-card, .value-card {
+        padding: 16px;
+      }
+      
+      .skill-category h3 {
+        font-size: 1.1rem;
+      }
+      .skill-info {
+        font-size: 0.8rem;
+      }
+      
+      .timeline-item {
+        padding-left: 20px;
+      }
+      .timeline-item:before {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+        left: -9px;
+        top: 15px;
+      }
+      .timeline-item h3 {
+        font-size: 1rem;
+      }
+      .timeline-item p {
+        font-size: 0.8rem;
+      }
+      
+      .company-icon, .value-icon {
+        font-size: 2rem;
+      }
+      
+      .filter-btn {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+      }
+      
+      .contact-info p {
+        font-size: 0.8rem;
+        gap: 8px;
+      }
+      .contact-info i {
+        font-size: 1rem;
+      }
+      
+      .map-container iframe {
+        height: 200px;
+      }
+      
+      footer p {
+        font-size: 0.7rem;
+      }
+      .social-links {
+        gap: 15px;
+      }
+      .social-links a {
+        font-size: 1.1rem;
+      }
+      
+      .whatsapp-float {
+        width: 42px;
+        height: 42px;
+        font-size: 1.4rem;
+        bottom: 15px;
+        right: 15px;
+      }
+      .back-to-top {
+        width: 36px;
+        height: 36px;
+        bottom: 75px;
+        right: 15px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Landscape Mode for Mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+      }
+      .nav-links {
+        padding: 60px 20px;
+        gap: 1rem;
+      }
+      .timeline-item:before {
+        top: 12px;
       }
     }
   </style>
@@ -622,7 +848,7 @@
   <div class="container">
     <h1>MD. JOYNAL ABEDIN</h1>
     <div class="typing-text" id="typingText"></div>
-    <p style="max-width: 600px; margin: 0 auto 1.5rem;">Educator & IT Expert | Web & Graphic Designer | Digital Marketer</p>
+    <p>Educator & IT Expert | Web & Graphic Designer | Digital Marketer</p>
     <div class="hero-buttons">
       <a href="https://drive.google.com/uc?export=download&id=14S9mFU2V7ehP_O1lS2iMDypC7Ht9I1EE" class="btn btn-primary" id="downloadCV"><i class="fas fa-download"></i> Download CV</a>
       <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
@@ -636,7 +862,7 @@
     <h2>About Me</h2>
     <div class="grid-2">
       <div class="card">
-        <p style="line-height: 1.8;">I am a dedicated and honest individual with over 5 years of teaching experience. I value family, faith, and integrity. Alongside my profession, I have a passion for learning new technologies, design, and helping others. I aim to live a simple, respectful, and purposeful life guided by Islamic values. My future ambition is to become a BCS Cadre (Teacher) and contribute to the nation through quality education and moral guidance.</p>
+        <p>I am a dedicated and honest individual with over 5 years of teaching experience. I value family, faith, and integrity. Alongside my profession, I have a passion for learning new technologies, design, and helping others. I aim to live a simple, respectful, and purposeful life guided by Islamic values. My future ambition is to become a BCS Cadre (Teacher) and contribute to the nation through quality education and moral guidance.</p>
       </div>
       <div class="card">
         <h3 style="color: var(--accent-primary); margin-bottom: 15px;">Personal Information</h3>
@@ -650,7 +876,7 @@
       </div>
     </div>
     
-    <h3 style="margin: 50px 0 30px; color: var(--text-primary);">My Vision & Values</h3>
+    <h3 style="margin: 50px 0 30px; color: var(--text-primary); text-align: center;">My Vision & Values</h3>
     <div class="grid-4">
       <div class="value-card">
         <div class="value-icon"><i class="fas fa-mosque"></i></div>
@@ -704,7 +930,7 @@
   <div class="container">
     <h2>My Companies & Ventures</h2>
     <div class="grid-3">
-      <a href="https://joynalar69.github.io/Creative_ai/" style="text-decoration: none;"> 
+      <a href="https://joynalar69.github.io/Creative_ai/" style="text-decoration: none;" target="_blank"> 
         <div class="company-card">
           <div class="company-icon"><i class="fas fa-robot"></i></div>
           <h3>Creative AI Institute</h3>
@@ -712,7 +938,7 @@
           <small style="color: var(--accent-primary);">Founder & CEO</small>
         </div>
       </a>
-      <a href="https://aragency1.blogspot.com/" style="text-decoration: none;"> 
+      <a href="https://aragency1.blogspot.com/" style="text-decoration: none;" target="_blank"> 
         <div class="company-card">
           <div class="company-icon"><i class="fas fa-chart-line"></i></div>
           <h3>AR Agency</h3>
@@ -720,7 +946,7 @@
           <small style="color: var(--accent-primary);">Founder & Director</small>
         </div>
       </a>
-      <a href="https://academicwriterbd.blogspot.com/" style="text-decoration: none;">
+      <a href="https://academicwriterbd.blogspot.com/" style="text-decoration: none;" target="_blank">
         <div class="company-card">
           <div class="company-icon"><i class="fas fa-pen-fancy"></i></div>
           <h3>Academic Writer</h3>
@@ -793,10 +1019,6 @@
       <div class="skill-item">
         <div class="skill-info"><span>WordPress</span><span>92%</span></div>
         <div class="progress-bar-bg"><div class="progress-fill" data-width="92"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-info"><span>React.js</span><span>75%</span></div>
-        <div class="progress-bar-bg"><div class="progress-fill" data-width="75"></div></div>
       </div>
     </div>
 
@@ -977,7 +1199,7 @@
 
 <script>
   // ============================================
-  // TYPING ANIMATION (No Loop)
+  // TYPING ANIMATION
   // ============================================
   const typingTitles = [
     "I am a Graphic Designer",
@@ -1053,11 +1275,11 @@
   });
 
   // ============================================
-  // GSAP SCROLL ANIMATIONS (Enhanced)
+  // GSAP SCROLL ANIMATIONS
   // ============================================
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero Entrance - Staggered
+  // Hero Entrance
   gsap.from(".hero h1", {
     y: 80,
     opacity: 0,
@@ -1090,7 +1312,7 @@
     ease: "power3.out"
   });
 
-  // Section Titles - Fade Up with Glow
+  // Section Titles
   gsap.utils.toArray("section h2").forEach(title => {
     gsap.from(title, {
       scrollTrigger: {
@@ -1105,7 +1327,7 @@
     });
   });
 
-  // About Cards - Staggered
+  // About Cards
   gsap.utils.toArray("#about .card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -1120,7 +1342,7 @@
     });
   });
 
-  // Value Cards - Staggered Scale
+  // Value Cards
   gsap.utils.toArray(".value-card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -1135,7 +1357,7 @@
     });
   });
 
-  // Timeline Items - Slide from Left
+  // Timeline Items
   gsap.utils.toArray(".timeline-item").forEach((item, i) => {
     gsap.from(item, {
       scrollTrigger: {
@@ -1150,7 +1372,7 @@
     });
   });
 
-  // Company Cards - Staggered Zoom
+  // Company Cards
   gsap.utils.toArray(".company-card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -1165,7 +1387,7 @@
     });
   });
 
-  // Certificate Cards - Slide from Left Staggered
+  // Certificate Cards
   gsap.utils.toArray(".cert-card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -1180,7 +1402,7 @@
     });
   });
 
-  // Skill Categories - Fade Up
+  // Skill Categories
   gsap.utils.toArray(".skill-category").forEach((category, i) => {
     gsap.from(category, {
       scrollTrigger: {
@@ -1195,7 +1417,7 @@
     });
   });
 
-  // Service Cards - Staggered
+  // Service Cards
   gsap.utils.toArray("#services .card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -1210,37 +1432,7 @@
     });
   });
 
-  // Project Cards - Staggered with Rotation
-  gsap.utils.toArray("#projectsContainer .card").forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: "top 88%",
-      },
-      rotationX: 15,
-      opacity: 0,
-      duration: 0.6,
-      delay: i * 0.08,
-      ease: "power2.out"
-    });
-  });
-
-  // Experience Timeline Items
-  gsap.utils.toArray("#experience .timeline-item").forEach((item, i) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: "top 90%",
-      },
-      x: -50,
-      opacity: 0,
-      duration: 0.5,
-      delay: i * 0.1,
-      ease: "power2.out"
-    });
-  });
-
-  // Hobbies Cards - Staggered
+  // Hobbies Cards
   gsap.utils.toArray("#hobbies .card").forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: {
@@ -1255,7 +1447,7 @@
     });
   });
 
-  // Contact Items - Staggered
+  // Contact Items
   gsap.utils.toArray(".contact-info p, .contact-form").forEach((item, i) => {
     gsap.from(item, {
       scrollTrigger: {
@@ -1371,7 +1563,6 @@
       </div>
     `).join('');
     
-    // Re-animate new cards with GSAP
     setTimeout(() => {
       gsap.utils.toArray("#projectsContainer .card").forEach((card, i) => {
         gsap.from(card, {
@@ -1432,7 +1623,6 @@
     });
   }
 
-  // Initial progress bars animation
   setTimeout(() => {
     animateProgressBars();
   }, 500);
