@@ -11,6 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Aladin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- GSAP for Scroll Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
   <style>
     * {
       margin: 0;
@@ -23,51 +27,52 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       overflow-x: hidden;
     }
-	/* Fix company card text colors */
-.company-card,
-.company-card h3,
-.company-card p,
-.company-card small {
-  color: var(--text);
-}
+    
+    /* Fix company card text colors */
+    .company-card,
+    .company-card h3,
+    .company-card p,
+    .company-card small {
+      color: var(--text);
+    }
 
-.company-card .company-icon {
-  color: var(--accent);
-}
+    .company-card .company-icon {
+      color: var(--accent);
+    }
 
-/* Fix value card text colors */
-.value-card,
-.value-card h4,
-.value-card p {
-  color: var(--text);
-}
+    /* Fix value card text colors */
+    .value-card,
+    .value-card h4,
+    .value-card p {
+      color: var(--text);
+    }
 
-.value-card .value-icon {
-  color: var(--accent);
-}
+    .value-card .value-icon {
+      color: var(--accent);
+    }
 
-/* Ensure all card text uses theme colors */
-.card,
-.card h3,
-.card p,
-.card small {
-  color: var(--text);
-}
+    /* Ensure all card text uses theme colors */
+    .card,
+    .card h3,
+    .card p,
+    .card small {
+      color: var(--text);
+    }
 
-/* Fix any anchor tags inside cards */
-.card a,
-.company-card a,
-.value-card a {
-  color: inherit;
-  text-decoration: none;
-}
+    /* Fix any anchor tags inside cards */
+    .card a,
+    .company-card a,
+    .value-card a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* Make sure headings inside cards use theme primary color */
-.card h3,
-.company-card h3,
-.value-card h4 {
-  color: var(--primary);
-}
+    /* Make sure headings inside cards use theme primary color */
+    .card h3,
+    .company-card h3,
+    .value-card h4 {
+      color: var(--primary);
+    }
 
     /* Aladin Font for Headings */
     h1, h2, h3, .logo, .hero h1 {
@@ -90,6 +95,13 @@
       color: var(--accent);
       animation: blink 0.7s infinite;
     }
+	#wid{
+	max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+    position: relative;
+    z-index: 2;
+	}
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
@@ -275,6 +287,7 @@
       align-items: center;
       z-index: 999;
       box-shadow: var(--shadow);
+      transition: all 0.3s ease;
     }
     .logo {
       font-size: 1.5rem;
@@ -295,6 +308,20 @@
       color: var(--text);
       font-weight: 500;
       transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
     }
     .nav-links a:hover {
       color: var(--accent);
@@ -307,6 +334,10 @@
       border: none;
       color: var(--accent);
       z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .menu-btn:hover {
+      transform: rotate(90deg);
     }
 
     /* Container */
@@ -338,7 +369,6 @@
     .hero h1 {
       font-size: 4rem;
       margin-bottom: 1rem;
-      animation: slideInLeft 0.8s ease;
       font-family: 'Aladin', cursive;
     }
     .hero-buttons {
@@ -443,6 +473,11 @@
       padding-left: 25px;
       margin-bottom: 25px;
       border-left: 3px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+    .timeline-item:hover {
+      transform: translateX(8px);
+      border-left-color: var(--accent-light);
     }
     .timeline-item:before {
       content: '\f0a3';
@@ -524,6 +559,7 @@
     .filter-btn.active, .filter-btn:hover {
       background: var(--accent);
       color: white;
+      transform: translateY(-2px);
     }
 
     /* Values */
@@ -546,6 +582,11 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: all 0.3s ease;
+    }
+    .contact-info p:hover {
+      transform: translateX(5px);
+      color: var(--accent);
     }
     .contact-form input, .contact-form textarea {
       width: 100%;
@@ -556,6 +597,12 @@
       background: var(--bg);
       color: var(--text);
       font-family: inherit;
+      transition: all 0.3s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 5px var(--accent);
     }
     .map-container iframe {
       width: 100%;
@@ -584,7 +631,7 @@
       transition: transform 0.3s;
     }
     .social-links a:hover {
-      transform: translateY(-3px);
+      transform: translateY(-3px) rotate(360deg);
       color: var(--accent);
     }
 
@@ -606,6 +653,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       z-index: 100;
       animation: pulse 1.5s infinite;
+      transition: all 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
     }
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
@@ -628,29 +679,59 @@
       color: white;
       cursor: pointer;
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: all 0.3s;
       z-index: 99;
     }
-
-    /* Animations */
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .back-to-top:hover {
+      transform: translateY(-3px);
     }
+
+    /* Scroll Animation Classes */
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
+      transform: translateY(50px);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .fade-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .fade-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .fade-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .zoom-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Navbar Scroll Effect */
+    .navbar.scrolled {
+      padding: 0.4rem 5%;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-hover);
     }
 
     /* Responsive */
@@ -673,7 +754,7 @@
         align-items: center;
         justify-content: center;
         gap: 1.2rem;
-        transition: right 0.3s ease;
+        transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         z-index: 998;
         box-shadow: -5px 0 30px rgba(0,0,0,0.15);
         padding: 80px 20px;
@@ -684,7 +765,24 @@
       .nav-links li {
         width: 100%;
         text-align: center;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.3s ease;
+        transition-delay: calc(0.05s * var(--i, 0));
       }
+      .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .nav-links li:nth-child(1) { --i: 1; }
+      .nav-links li:nth-child(2) { --i: 2; }
+      .nav-links li:nth-child(3) { --i: 3; }
+      .nav-links li:nth-child(4) { --i: 4; }
+      .nav-links li:nth-child(5) { --i: 5; }
+      .nav-links li:nth-child(6) { --i: 6; }
+      .nav-links li:nth-child(7) { --i: 7; }
+      .nav-links li:nth-child(8) { --i: 8; }
+      .nav-links li:nth-child(9) { --i: 9; }
       .nav-links a {
         display: block;
         padding: 10px;
@@ -827,10 +925,10 @@
   <div class="container">
     <h2>About Me</h2>
     <div class="grid-2">
-      <div class="card">
+      <div class="card fade-right">
         <p style="line-height: 1.7;">I am a dedicated and honest individual with over 5 years of teaching experience. I value family, faith, and integrity. Alongside my profession, I have a passion for learning new technologies, design, and helping others. I aim to live a simple, respectful, and purposeful life guided by Islamic values. My future ambition is to become a BCS Cadre (Teacher) and contribute to the nation through quality education and moral guidance.</p>
       </div>
-      <div class="card">
+      <div class="card fade-left">
         <h3 style="color: var(--accent); margin-bottom: 12px;">Personal Information</h3>
         <p><strong>Full Name:</strong> Md. Joynal Abedin</p>
         <p><strong>Date of Birth:</strong> 01 December 1998</p>
@@ -843,22 +941,22 @@
     
     <h3 style="margin: 30px 0 20px;">My Vision & Values</h3>
     <div class="grid-4">
-      <div class="value-card card">
+      <div class="value-card card zoom-in">
         <div class="value-icon"><i class="fas fa-mosque"></i></div>
         <h4>Faith-Based Living</h4>
         <p>Living under Islamic teachings</p>
       </div>
-      <div class="value-card card">
+      <div class="value-card card zoom-in">
         <div class="value-icon"><i class="fas fa-hand-holding-heart"></i></div>
         <h4>Integrity</h4>
         <p>Honest and transparent work</p>
       </div>
-      <div class="value-card card">
+      <div class="value-card card zoom-in">
         <div class="value-icon"><i class="fas fa-users"></i></div>
         <h4>Strong Relationships</h4>
         <p>Respectful connections</p>
       </div>
-      <div class="value-card card">
+      <div class="value-card card zoom-in">
         <div class="value-icon"><i class="fas fa-leaf"></i></div>
         <h4>Simplicity</h4>
         <p>Simple, purposeful life</p>
@@ -871,32 +969,72 @@
 <section id="study" style="background: var(--bg-alt);">
   <div class="container">
     <h2>Education Timeline</h2>
-    <div class="timeline-item">
+    <div class="timeline-item fade-left">
       <h3>🎓 Masters in Al-Hadith & Islamic Studies</h3>
-      <p>Faridganj Mojidiya Kamil Madrasah | CGPA: 3.72/4</p>
+      <p>Faridganj Mojidiya Kamil Madrasah (2023) | CGPA: 3.72/4</p>
     </div>
-    <div class="timeline-item">
+    <div class="timeline-item fade-left">
       <h3>🎓 Honours in Al-Hadith & Islamic Studies</h3>
       <p>Faridganj Mojidiya Kamil Madrasah (2022) | CGPA: 3.77/4</p>
     </div>
-    <div class="timeline-item">
+    <div class="timeline-item fade-left">
       <h3>📖 HSC/Alim (Higher Secondary Certificate)</h3>
       <p>Faridganj Mojidiya Kamil Madrasah (2018) | GPA: 4.93/5</p>
     </div>
-    <div class="timeline-item">
+    <div class="timeline-item fade-left">
       <h3>📖 SSC/Dakhil (Secondary School Certificate)</h3>
       <p>Faridganj Mojidiya Kamil Madrasah (2016) | GPA: 4.69/5</p>
     </div>
   </div>
 </section>
 
-<!-- Companies Section -->
-<section id="companies">
+<!-- Extra Certifications Section -->
+<section id="extra-certifications"">
   <div class="container">
+    <h2>Extra Certifications</h2>
+    <div class="grid-2">
+      <div class="cert-card fade-right">
+        <div class="cert-year">📅 2024</div>
+        <strong>Advanced Certificate Course in Computer Technology</strong>
+        <p>Technical ICT Bangladesh</p>
+      </div>
+      <div class="cert-card fade-left">
+        <div class="cert-year">📅 2022</div>
+        <strong>Basic in Computer Office Applications</strong>
+        <p>Technical ICT Bangladesh</p>
+      </div>
+      <div class="cert-card fade-right">
+        <div class="cert-year">📅 2022</div>
+        <strong>Fundamentals of Digital Marketing</strong>
+        <p>Google Digital Garage</p>
+      </div>
+      <div class="cert-card fade-left">
+        <div class="cert-year">📅 2021</div>
+        <strong>Graphic Design Basic to Advanced</strong>
+        <p>OT Academy, Dhaka, Bangladesh</p>
+      </div>
+      <div class="cert-card fade-right">
+        <div class="cert-year">📅 2020</div>
+        <strong>English Fundamentals to Advanced</strong>
+        <p>King College, London (Online Course)</p>
+      </div>
+      <div class="cert-card fade-left">
+        <div class="cert-year">📅 2020</div>
+        <strong>Web Design & WordPress Theme Customization</strong>
+        <p>Learning & Earning Development Project</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Companies Section -->
+<section id="companies" style="background: var(--bg-alt);">
+  <div class="container" id="wid">
     <h2>My Companies & Ventures</h2>
     <div class="grid-3">
       <a href="https://joynalar69.github.io/Creative_ai/" style="text-decoration: none;"> 
-        <div class="company-card">
+        <div class="company-card zoom-in">
           <div class="company-icon"><i class="fas fa-robot"></i></div>
           <h3>Creative AI Institute</h3>
           <p>Artificial Intelligence & Creative Learning Hub</p>
@@ -904,7 +1042,7 @@
         </div>
       </a>
       <a href="https://aragency1.blogspot.com/" style="text-decoration: none;"> 
-        <div class="company-card">
+        <div class="company-card zoom-in">
           <div class="company-icon"><i class="fas fa-chart-line"></i></div>
           <h3>AR Agency</h3>
           <p>Digital Marketing & Branding Solutions</p>
@@ -912,7 +1050,7 @@
         </div>
       </a>
       <a href="https://academicwriterbd.blogspot.com/" style="text-decoration: none;">
-        <div class="company-card">
+        <div class="company-card zoom-in">
           <div class="company-icon"><i class="fas fa-pen-fancy"></i></div>
           <h3>Academic Writer</h3>
           <p>Professional Academic Content & Research Writing</p>
@@ -923,51 +1061,13 @@
   </div>
 </section>
 
-<!-- Extra Certifications Section -->
-<section id="extra-certifications" style="background: var(--bg-alt);">
-  <div class="container">
-    <h2>Extra Certifications</h2>
-    <div class="grid-2">
-      <div class="cert-card">
-        <div class="cert-year">📅 2024</div>
-        <strong>Advanced Certificate Course in Computer Technology</strong>
-        <p>Technical ICT Bangladesh</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-year">📅 2022</div>
-        <strong>Basic in Computer Office Applications</strong>
-        <p>Technical ICT Bangladesh</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-year">📅 2022</div>
-        <strong>Fundamentals of Digital Marketing</strong>
-        <p>Google Digital Garage</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-year">📅 2021</div>
-        <strong>Graphic Design Basic to Advanced</strong>
-        <p>OT Academy, Dhaka, Bangladesh</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-year">📅 2020</div>
-        <strong>English Fundamentals to Advanced</strong>
-        <p>King College, London (Online Course)</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-year">📅 2020</div>
-        <strong>Web Design & WordPress Theme Customization</strong>
-        <p>Learning & Earning Development Project</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Skills Section -->
 <section id="skills">
   <div class="container">
     <h2>Skills & Expertise</h2>
     
-    <div class="skill-category">
+    <div class="skill-category fade-up">
       <h3><i class="fas fa-code"></i> Web Development</h3>
       <div class="skill-item">
         <div class="skill-info"><span>HTML5 & CSS3</span><span>95%</span></div>
@@ -987,7 +1087,7 @@
       </div>
     </div>
 
-    <div class="skill-category">
+    <div class="skill-category fade-up">
       <h3><i class="fas fa-paintbrush"></i> Graphic Design</h3>
       <div class="skill-item">
         <div class="skill-info"><span>Adobe Photoshop</span><span>94%</span></div>
@@ -1007,7 +1107,7 @@
       </div>
     </div>
 
-    <div class="skill-category">
+    <div class="skill-category fade-up">
       <h3><i class="fas fa-chart-line"></i> SEO & Digital Marketing</h3>
       <div class="skill-item">
         <div class="skill-info"><span>SEO</span><span>85%</span></div>
@@ -1023,7 +1123,7 @@
       </div>
     </div>
 
-    <div class="skill-category">
+    <div class="skill-category fade-up">
       <h3><i class="fas fa-video"></i> Video Editing</h3>
       <div class="skill-item">
         <div class="skill-info"><span>Promotional Videography</span><span>80%</span></div>
@@ -1035,7 +1135,7 @@
       </div>
     </div>
 
-    <div class="skill-category">
+    <div class="skill-category fade-up">
       <h3><i class="fas fa-language"></i> Languages</h3>
       <div class="skill-item">
         <div class="skill-info"><span>Bangla (Native)</span><span>100%</span></div>
@@ -1062,12 +1162,12 @@
   <div class="container">
     <h2>What I Do</h2>
     <div class="grid-3">
-      <div class="card"><i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--accent);"></i><h3>Web Development</h3><p>Custom websites, E-commerce, Blog creation</p></div>
-      <div class="card"><i class="fas fa-palette" style="font-size: 2rem; color: var(--accent);"></i><h3>Graphic Design</h3><p>Logo, Poster, Banner, Business Card, Book Cover</p></div>
-      <div class="card"><i class="fas fa-pen-fancy" style="font-size: 2rem; color: var(--accent);"></i><h3>Content Writing</h3><p>Educational content, Blog posts, Articles</p></div>
-      <div class="card"><i class="fas fa-video" style="font-size: 2rem; color: var(--accent);"></i><h3>Video Editing</h3><p>Promotional videos, Editing, Color grading</p></div>
-      <div class="card"><i class="fas fa-chart-simple" style="font-size: 2rem; color: var(--accent);"></i><h3>Digital Marketing</h3><p>SEO, Facebook Ads, Google Ads</p></div>
-      <div class="card"><i class="fas fa-chalkboard-user" style="font-size: 2rem; color: var(--accent);"></i><h3>Teaching & Tutoring</h3><p>Math, English, Islamic Studies</p></div>
+      <div class="card zoom-in"><i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--accent);"></i><h3>Web Development</h3><p>Custom websites, E-commerce, Blog creation</p></div>
+      <div class="card zoom-in"><i class="fas fa-palette" style="font-size: 2rem; color: var(--accent);"></i><h3>Graphic Design</h3><p>Logo, Poster, Banner, Business Card, Book Cover</p></div>
+      <div class="card zoom-in"><i class="fas fa-pen-fancy" style="font-size: 2rem; color: var(--accent);"></i><h3>Content Writing</h3><p>Educational content, Blog posts, Articles</p></div>
+      <div class="card zoom-in"><i class="fas fa-video" style="font-size: 2rem; color: var(--accent);"></i><h3>Video Editing</h3><p>Promotional videos, Editing, Color grading</p></div>
+      <div class="card zoom-in"><i class="fas fa-chart-simple" style="font-size: 2rem; color: var(--accent);"></i><h3>Digital Marketing</h3><p>SEO, Facebook Ads, Google Ads</p></div>
+      <div class="card zoom-in"><i class="fas fa-chalkboard-user" style="font-size: 2rem; color: var(--accent);"></i><h3>Teaching & Tutoring</h3><p>Math, English, Islamic Studies</p></div>
     </div>
   </div>
 </section>
@@ -1091,17 +1191,17 @@
 <section id="experience" style="background: var(--bg-alt);">
   <div class="container">
     <h2>Work Experience</h2>
-    <div class="timeline-item">
-      <h3>👨‍🏫 Head Teacher</h3>
-      <p>Bornomala Kindergarten, Faridganj | 2026 - Present</p>
+    <div class="timeline-item fade-left">
+      <h3>📊 Cluster Business Promoter</h3>
+      <p><a href="https://awayscholarsbd.com/" style=" text-decoration: none; color: inherit;">Away Scholars</a>, Shewrapara, Dhaka | 2026 - Running</p>
     </div>
-    <div class="timeline-item">
+	<div class="timeline-item fade-left">
+      <h3>👨‍🏫 Head Teacher</h3>
+      <p>Bornomala Kindergarten, Faridganj | 2026 - Running</p>
+    </div>
+    <div class="timeline-item fade-left">
       <h3>👨‍🏫 Assistant Teacher (Math & English)</h3>
       <p>Darussunnat Mojidiya Model Madrasah, Faridganj | 2021 - 2025</p>
-    </div>
-    <div class="timeline-item">
-      <h3>📊 Cluster Business Promoter</h3>
-      <p>Away Scholars, Shewrapara, Dhaka | 2026 - Running</p>
     </div>
   </div>
 </section>
@@ -1111,10 +1211,10 @@
   <div class="container">
     <h2>Hobbies & Interests</h2>
     <div class="grid-4">
-      <div class="card"><i class="fas fa-book" style="font-size: 1.8rem;"></i><h3>Writing</h3><p>Educational books & learning materials</p></div>
-      <div class="card"><i class="fas fa-paintbrush" style="font-size: 1.8rem;"></i><h3>Design</h3><p>Creative tools for productive purposes</p></div>
-      <div class="card"><i class="fas fa-hand-holding-heart" style="font-size: 1.8rem;"></i><h3>Helping</h3><p>Community & family support</p></div>
-      <div class="card"><i class="fas fa-globe" style="font-size: 1.8rem;"></i><h3>Travel</h3><p>Exploring new places & ideas</p></div>
+      <div class="card zoom-in"><i class="fas fa-book" style="font-size: 1.8rem;"></i><h3>Writing</h3><p>Educational books & learning materials</p></div>
+      <div class="card zoom-in"><i class="fas fa-paintbrush" style="font-size: 1.8rem;"></i><h3>Design</h3><p>Creative tools for productive purposes</p></div>
+      <div class="card zoom-in"><i class="fas fa-hand-holding-heart" style="font-size: 1.8rem;"></i><h3>Helping</h3><p>Community & family support</p></div>
+      <div class="card zoom-in"><i class="fas fa-globe" style="font-size: 1.8rem;"></i><h3>Travel</h3><p>Exploring new places & ideas</p></div>
     </div>
   </div>
 </section>
@@ -1125,19 +1225,19 @@
     <h2>Contact Me</h2>
     <div class="grid-2">
       <div class="contact-info">
-        <p><i class="fas fa-phone" style="color: var(--accent);"></i> +8801679338669</p>
-        <p><i class="fas fa-phone-alt" style="color: var(--accent);"></i> +8801746654369</p>
-        <p><i class="fas fa-envelope" style="color: var(--accent);"></i> mdjoynalar@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Vantir Gaow, Faridgonj, Chandpur, Bangladesh</p>
+        <p class="fade-right"><i class="fas fa-phone" style="color: var(--accent);"></i> +8801679338669</p>
+        <p class="fade-right"><i class="fas fa-phone-alt" style="color: var(--accent);"></i> +8801746654369</p>
+        <p class="fade-right"><i class="fas fa-envelope" style="color: var(--accent);"></i> mdjoynalar@gmail.com</p>
+        <p class="fade-right"><i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> Vantir Gaow, Faridgonj, Chandpur, Bangladesh</p>
       </div>
-      <form action="https://formspree.io/f/xblkkkjq" method="POST" class="contact-form" id="contactForm">
+      <form action="https://formspree.io/f/xblkkkjq" method="POST" class="contact-form fade-left" id="contactForm">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         <button type="submit" class="btn btn-primary">Send Message</button>
       </form>
     </div>
-    <div class="map-container" style="margin-top: 25px;">
+    <div class="map-container fade-up" style="margin-top: 25px;">
       <iframe src="https://maps.google.com/maps?q=Faridganj%2C%20Chandpur%2C%20Bangladesh&t=&z=12&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
@@ -1160,7 +1260,7 @@
 
 <script>
   // ============================================
-  // TYPING ANIMATION (instead of rotating-title)
+  // TYPING ANIMATION
   // ============================================
   const typingTitles = [
     "I am a Graphic Designer",
@@ -1207,7 +1307,7 @@
   typeEffect();
 
   // ============================================
-  // MOBILE MENU TOGGLE (Slide from RIGHT)
+  // MOBILE MENU TOGGLE WITH ANIMATION
   // ============================================
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
@@ -1218,18 +1318,20 @@
     if (menuOpen) {
       navLinks.classList.add('active');
       menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+      document.body.style.overflow = 'hidden';
     } else {
       navLinks.classList.remove('active');
       menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      document.body.style.overflow = '';
     }
   });
 
-  // Close menu when clicking on a link
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
       menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       menuOpen = false;
+      document.body.style.overflow = '';
     });
   });
 
@@ -1274,7 +1376,22 @@
   setTheme(savedTheme);
 
   // ============================================
-  // SCROLL PROGRESS & ANIMATIONS
+  // SCROLL ANIMATION WITH INTERSECTION OBSERVER
+  // ============================================
+  const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  
+  animatedElements.forEach(el => observer.observe(el));
+  
+  // ============================================
+  // SCROLL PROGRESS & NAVBAR SCROLL EFFECT
   // ============================================
   window.addEventListener('scroll', () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1286,12 +1403,13 @@
     if (winScroll > 300) backBtn.style.opacity = "1";
     else backBtn.style.opacity = "0";
     
-    document.querySelectorAll('.fade-up').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        el.classList.add('visible');
-      }
-    });
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
     
     animateProgressBars();
   });
@@ -1301,7 +1419,7 @@
     progressFills.forEach(fill => {
       const width = fill.getAttribute('data-width');
       const rect = fill.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+      if (rect.top < window.innerHeight - 100 && rect.bottom > 0 && fill.style.width !== width + '%') {
         fill.style.width = width + '%';
       }
     });
@@ -1312,12 +1430,7 @@
   });
 
   // ============================================
-  // DOWNLOAD CV - Direct download (no alert)
-  // ============================================
-  // No alert - direct Google Drive download link works automatically
-
-  // ============================================
-  // PROJECTS DATA (with your links)
+  // PROJECTS DATA
   // ============================================
   const projectsData = {
     web: [
@@ -1358,7 +1471,7 @@
       projects = projectsData[filter] || [];
     }
     container.innerHTML = projects.map(proj => `
-      <div class="card">
+      <div class="card zoom-in">
         <h3>${proj.name}</h3>
         <p>${proj.desc}</p>
         <div style="margin-top: 12px;">
@@ -1366,6 +1479,11 @@
         </div>
       </div>
     `).join('');
+    
+    // Re-observe new cards
+    setTimeout(() => {
+      document.querySelectorAll('#projectsContainer .zoom-in').forEach(el => observer.observe(el));
+    }, 100);
   }
   renderProjects('all');
 
@@ -1378,7 +1496,7 @@
   });
 
   // ============================================
-  // CONTACT FORM - Formspree (fixed)
+  // CONTACT FORM
   // ============================================
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
@@ -1402,14 +1520,8 @@
       }
     });
   }
-
-  // Add fade-up class to sections
-  document.querySelectorAll('section').forEach(section => {
-    section.classList.add('fade-up');
-  });
   
   setTimeout(() => {
-    window.dispatchEvent(new Event('scroll'));
     animateProgressBars();
   }, 300);
 </script>
