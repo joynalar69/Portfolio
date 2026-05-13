@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="MD. Joynal Abedin - BCS Cadre Aspirant | Islamic Studies Graduate | Web Designer | Graphic Designer | Digital Marketer">
+  <title>MD. Joynal Abedin | Professional Portfolio</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden !important;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Core Design System */
+    :root {
+      --grad-hero: linear-gradient(135deg, #0a192f, #0f2b4d, #0b3b5f);
+      --grad-skill: linear-gradient(135deg, #f5f0ff, #ede9fe);
+      --grad-service: linear-gradient(135deg, #fff7ed, #fffbeb);
+      --grad-project: linear-gradient(135deg, #111827, #1f2937);
+      --grad-contact: linear-gradient(135deg, #111827, #1f2937);
+      --grad-team: linear-gradient(135deg, #1e3a5f, #2a4a7a);
+      
+      --accent-1: #3b82f6;
+      --accent-2: #8b5cf6;
+      --accent-3: #f97316;
+      --accent-4: #10b981;
+      --accent-5: #06b6d4;
+    }
+
+    /* Card Hover Effects */
+    .hover-lift {
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Scroll Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      z-index: 1001;
+    }
+    .progress-bar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    /* Team Card Styles */
+    .team-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a2e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 10px;
+    }
+    
+    /* Fix section overflow */
+    section {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+    
+    /* Fix container */
+    .container-custom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Fix typing text */
+    #typing-text {
+      display: inline-block;
+      min-width: 200px;
+    }
+    
+    /* Progress bar animation */
+    .progress-bar {
+      transition: width 1s ease-in-out;
+    }
+    
+    /* Hero image styles */
+    .hero-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease;
+    }
+    .hero-image:hover {
+      transform: scale(1.05);
+    }
+    
+    /* ============================================
+       WHATSAPP FLOAT BUTTON
+       ============================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      transition: all 0.3s ease;
+      animation: whatsapp-pulse 1.5s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #20b859;
+    }
+
+    @keyframes whatsapp-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* ============================================
+       BACK TO TOP BUTTON
+       ============================================ */
+    .back-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      background: var(--accent-1);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 99;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      background: #2563eb;
+    }
+
+    /* ============================================
+       TEAM MEMBER SOCIAL ICONS
+       ============================================ */
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .team-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .team-social a:hover {
+      transform: translateY(-3px);
+    }
+
+    .team-social a.facebook:hover {
+      background: #1877f2;
+    }
+    .team-social a.website:hover {
+      background: #3b82f6;
+    }
+    .team-social a.whatsapp:hover {
+      background: #25D366;
+    }
+    .team-social a.email:hover {
+      background: #ea4335;
+    }
+    
+    /* Filter buttons */
+    .filter-btn {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background-color: #3b82f6 !important;
+      color: white !important;
+    }
+    
+    /* Navigation */
+    .nav-link {
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #3b82f6 !important;
+      transform: translateY(-2px);
+    }
+    
+    /* Mobile fixes */
+    @media (max-width: 768px) {
+      .container-custom {
+        padding: 0 16px;
+      }
+      .hero-image {
+        width: 140px;
+        height: 140px;
+      }
+      h1 {
+        font-size: 1.8rem !important;
+      }
+      .typing-text {
+        font-size: 1rem !important;
+      }
+      .whatsapp-float {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
+      }
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 85px;
+        right: 20px;
+      }
+      .team-social a {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .whatsapp-float {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
+      }
+      .back-to-top {
+        width: 36px;
+        height: 36px;
+        bottom: 72px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="progress-container"><div class="progress-bar" id="scrollProgress"></div></div>
+
+<!-- Floating Background Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+  <div class="absolute top-20 left-10 text-4xl floating opacity-20">✦</div>
+  <div class="absolute bottom-32 right-12 text-5xl floating opacity-20" style="animation-delay: 1s;">●</div>
+  <div class="absolute top-1/3 right-[15%] text-3xl floating opacity-20" style="animation-delay: 2s;">◆</div>
+  <div class="absolute bottom-1/4 left-[20%] text-2xl floating opacity-20" style="animation-delay: 1.5s;">★</div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 backdrop-blur-xl rounded-full shadow-2xl px-5 py-3 flex gap-6">
+  <a href="#home" class="text-gray-700 hover:text-blue-600 text-xl transition-all nav-link"><i class="fas fa-home"></i></a>
+  <a href="#about" class="text-gray-700 hover:text-blue-600 text-xl transition-all nav-link"><i class="fas fa-user"></i></a>
+  <a href="#skills" class="text-gray-700 hover:text-blue-600 text-xl transition-all nav-link"><i class="fas fa-code"></i></a>
+  <a href="#team" class="text-gray-700 hover:text-blue-600 text-xl transition-all nav-link"><i class="fas fa-users"></i></a>
+  <a href="#projects" class="text-gray-700 hover:text-blue-600 text-xl transition-all nav-link"><i class="fas fa-folder"></i></a>
+  <a href="#contact" class="text-gray-700 hover:text-blue-600 text-xl transition-all nav-link"><i class="fas fa-envelope"></i></a>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center text-center" style="background: var(--grad-hero);">
+  <div class="container-custom mx-auto px-4 py-20">
+    <!-- Profile Image Placeholder -->
+    <div data-aos="fade-down" data-aos-duration="800">
+      <img src="image/joynal.jpg" alt="MD. Joynal Abedin" class="hero-image mx-auto mb-6">
+    </div>
+    <h1 class="text-5xl md:text-7xl font-bold text-white mb-4" data-aos="fade-up" data-aos-duration="800">MD. JOYNAL ABEDIN</h1>
+    <div class="text-2xl md:text-3xl text-blue-400 mb-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+      I am a <span id="typing-text" class="border-r-2 border-blue-400"></span>
+    </div>
+    <p class="text-gray-300 max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">Educator & IT Expert | Web & Graphic Designer | Digital Marketer</p>
+    <div class="flex gap-4 justify-center flex-wrap" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+      <a href="https://drive.google.com/uc?export=download&id=14S9mFU2V7ehP_O1lS2iMDypC7Ht9I1EE" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all hover-lift"><i class="fas fa-download mr-2"></i>Download CV</a>
+      <a href="#contact" class="px-6 py-3 border-2 border-blue-600 text-blue-600 bg-white/10 rounded-full hover:bg-blue-600 hover:text-white transition-all hover-lift"><i class="fas fa-envelope mr-2"></i>Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-24 bg-white">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">About <span class="text-blue-600">Me</span></h2>
+      <div class="w-24 h-1 bg-blue-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-gray-50 rounded-2xl p-8 hover-lift" data-aos="fade-right">
+        <p class="text-gray-700 leading-relaxed">I am a dedicated and honest individual with over 5 years of teaching experience. I value family, faith, and integrity. Alongside my profession, I have a passion for learning new technologies, design, and helping others. I aim to live a simple, respectful, and purposeful life guided by Islamic values. My future ambition is to become a BCS Cadre (Teacher) and contribute to the nation through quality education and moral guidance.</p>
+      </div>
+      <div class="bg-gray-50 rounded-2xl p-8 hover-lift" data-aos="fade-left">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Personal Information</h3>
+        <p class="text-gray-600 mb-2"><strong>Full Name:</strong> Md. Joynal Abedin</p>
+        <p class="text-gray-600 mb-2"><strong>Date of Birth:</strong> 01 December 1998</p>
+        <p class="text-gray-600 mb-2"><strong>Marital Status:</strong> Single</p>
+        <p class="text-gray-600 mb-2"><strong>Religion:</strong> Islam</p>
+        <p class="text-gray-600 mb-2"><strong>Nationality:</strong> Bangladeshi</p>
+        <p class="text-gray-600 mb-2"><strong>Blood Group:</strong> A+</p>
+        <p class="text-gray-600"><strong>Languages:</strong> Bangla, English, Arabic, Hindi</p>
+      </div>
+    </div>
+    
+    <div class="mt-16">
+      <h3 class="text-2xl font-bold text-gray-800 text-center mb-8" data-aos="fade-up">My Vision & Values</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in">
+          <i class="fas fa-mosque text-4xl text-blue-600 mb-3"></i>
+          <h4 class="font-bold text-gray-800">Faith-Based Living</h4>
+          <p class="text-gray-600 text-sm">Living under Islamic teachings</p>
+        </div>
+        <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-hand-holding-heart text-4xl text-blue-600 mb-3"></i>
+          <h4 class="font-bold text-gray-800">Integrity</h4>
+          <p class="text-gray-600 text-sm">Honest and transparent work</p>
+        </div>
+        <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-users text-4xl text-blue-600 mb-3"></i>
+          <h4 class="font-bold text-gray-800">Strong Relationships</h4>
+          <p class="text-gray-600 text-sm">Respectful connections</p>
+        </div>
+        <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-leaf text-4xl text-blue-600 mb-3"></i>
+          <h4 class="font-bold text-gray-800">Simplicity</h4>
+          <p class="text-gray-600 text-sm">Simple, purposeful life</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section class="py-24 bg-gray-50">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">Education <span class="text-purple-600">Timeline</span></h2>
+      <div class="w-24 h-1 bg-purple-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="max-w-3xl mx-auto">
+      <div class="relative border-l-4 border-purple-600 ml-4">
+        <div class="mb-8 ml-6" data-aos="fade-left">
+          <div class="absolute w-4 h-4 bg-purple-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;🎓 Masters in Al-Hadith & Islamic Studies</h3>
+          <p class="text-gray-600">Faridganj Mojidiya Kamil Madrasah | CGPA: 3.72/4</p>
+        </div>
+        <div class="mb-8 ml-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="absolute w-4 h-4 bg-purple-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;🎓 Honours in Al-Hadith & Islamic Studies</h3>
+          <p class="text-gray-600">Faridganj Mojidiya Kamil Madrasah (2022) | CGPA: 3.77/4</p>
+        </div>
+        <div class="mb-8 ml-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="absolute w-4 h-4 bg-purple-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;📖 HSC/Alim (Higher Secondary Certificate)</h3>
+          <p class="text-gray-600">Faridganj Mojidiya Kamil Madrasah (2018) | GPA: 4.93/5</p>
+        </div>
+        <div class="mb-8 ml-6" data-aos="fade-left" data-aos-delay="300">
+          <div class="absolute w-4 h-4 bg-purple-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;📖 SSC/Dakhil (Secondary School Certificate)</h3>
+          <p class="text-gray-600">Faridganj Mojidiya Kamil Madrasah (2016) | GPA: 4.69/5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Companies Section -->
+<section class="py-24 bg-white">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">My <span class="text-green-600">Companies & Ventures</span></h2>
+      <div class="w-24 h-1 bg-green-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <a href="https://joynalar69.github.io/Creative_ai/" target="_blank" class="group" data-aos="zoom-in">
+        <div class="bg-gray-50 rounded-2xl p-8 text-center hover-lift">
+          <i class="fas fa-robot text-5xl text-green-600 mb-4"></i>
+          <h3 class="text-xl font-bold text-gray-800">Creative AI Institute</h3>
+          <p class="text-gray-600 mt-2">Artificial Intelligence & Creative Learning Hub</p>
+          <p class="text-green-600 mt-3 font-semibold">Founder & CEO →</p>
+        </div>
+      </a>
+      <a href="https://aragency1.blogspot.com/" target="_blank" class="group" data-aos="zoom-in" data-aos-delay="100">
+        <div class="bg-gray-50 rounded-2xl p-8 text-center hover-lift">
+          <i class="fas fa-chart-line text-5xl text-green-600 mb-4"></i>
+          <h3 class="text-xl font-bold text-gray-800">AR Agency</h3>
+          <p class="text-gray-600 mt-2">Digital Marketing & Branding Solutions</p>
+          <p class="text-green-600 mt-3 font-semibold">Founder & Director →</p>
+        </div>
+      </a>
+      <a href="https://academicwriterbd.blogspot.com/" target="_blank" class="group" data-aos="zoom-in" data-aos-delay="200">
+        <div class="bg-gray-50 rounded-2xl p-8 text-center hover-lift">
+          <i class="fas fa-pen-fancy text-5xl text-green-600 mb-4"></i>
+          <h3 class="text-xl font-bold text-gray-800">Academic Writer</h3>
+          <p class="text-gray-600 mt-2">Professional Academic Content & Research Writing</p>
+          <p class="text-green-600 mt-3 font-semibold">Lead Writer →</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-24" style="background: var(--grad-skill);">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">Skills & <span class="text-purple-600">Expertise</span></h2>
+      <div class="w-24 h-1 bg-purple-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift" data-aos="zoom-in">
+        <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-code text-purple-600 mr-2"></i> Web Development</h3>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>HTML5 & CSS3</span><span>95%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="95" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>JavaScript</span><span>90%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="90" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>PHP</span><span>85%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="85" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>WordPress</span><span>92%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="92" style="width:0%"></div></div></div>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="100">
+        <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-paintbrush text-purple-600 mr-2"></i> Graphic Design</h3>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Adobe Photoshop</span><span>94%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="94" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Adobe Illustrator</span><span>88%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="88" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>CorelDraw</span><span>90%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="90" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Canva</span><span>96%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="96" style="width:0%"></div></div></div>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-chart-line text-purple-600 mr-2"></i> SEO & Digital Marketing</h3>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>SEO</span><span>85%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="85" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Facebook Ads</span><span>82%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="82" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Google Ads</span><span>78%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="78" style="width:0%"></div></div></div>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fas fa-language text-purple-600 mr-2"></i> Languages</h3>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Bangla (Native)</span><span>100%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="100" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>English (Fluent)</span><span>90%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="90" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Arabic (Intermediate)</span><span>75%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="75" style="width:0%"></div></div></div>
+        <div class="mb-3"><div class="flex justify-between mb-1"><span>Hindi (Conversational)</span><span>70%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="progress-bar h-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600" data-skill="70" style="width:0%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="py-24" style="background: var(--grad-team);">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-white">Our <span class="text-blue-400">Team</span></h2>
+      <div class="w-24 h-1 bg-blue-400 mx-auto mt-3 mb-4 rounded-full"></div>
+      <p class="text-gray-300 max-w-2xl mx-auto mb-12">Meet the passionate professionals behind our success</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Team Member 1: Joynal Abedin -->
+      <div class="team-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 hover-lift" data-aos="zoom-in">
+        <div class="relative">
+          <img src="image/joynal.jpg" alt="Joynal Abedin" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-blue-400 mb-4">
+        </div>
+        <h3 class="text-xl font-bold text-white mt-2">Joynal Abedin</h3>
+        <p class="text-blue-400 mb-2">IT Expert</p>
+        <p class="text-gray-300 text-sm">Educator & IT Expert | Web & Graphic Designer | Digital Marketer</p>
+        <div class="team-social">
+          <a href="https://facebook.com/joynalar69" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://joynalar69.github.io/Creative_ai/" target="_blank" class="website"><i class="fas fa-globe"></i></a>
+          <a href="https://wa.me/8801679338669" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:mdjoynalar@gmail.com" target="_blank" class="email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      
+      <!-- Team Member 2: Sazzad Hossain -->
+      <div class="team-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 hover-lift" data-aos="zoom-in" data-aos-delay="100">
+        <div class="relative">
+          <img src="image/sazzad.jpg" alt="Sazzad Hossain" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-green-400 mb-4">
+        </div>
+        <h3 class="text-xl font-bold text-white mt-2">Sazzad Hossain</h3>
+        <p class="text-green-400 mb-2">Marketing Director</p>
+        <p class="text-gray-300 text-sm">Marketing Director | Brand Strategist | Growth Catalyst</p>
+        <div class="team-social">
+          <a href="https://www.facebook.com/LBS.Sazzad" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://sazzad.dev" target="_blank" class="website"><i class="fas fa-globe"></i></a>
+          <a href="https://wa.me/8801632791981" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:sazzad@gmail.com" target="_blank" class="email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      
+      <!-- Team Member 3: Rashed Raihan -->
+      <div class="team-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center border border-white/20 hover-lift" data-aos="zoom-in" data-aos-delay="200">
+        <div class="relative">
+          <img src="image/rashed.jpg" alt="Rashed Raihan" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-orange-400 mb-4">
+        </div>
+        <h3 class="text-xl font-bold text-white mt-2">Rashed Raihan</h3>
+        <p class="text-orange-400 mb-2">Marketing Director</p>
+        <p class="text-gray-300 text-sm">Graphic Designer | Web Designer & Developer | App Designer & Developer</p>
+        <div class="team-social">
+          <a href="https://www.facebook.com/TechRashadRaihan" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://techrashad.github.io/Portfolio/" target="_blank" class="website"><i class="fas fa-globe"></i></a>
+          <a href="https://wa.me/8801407774872" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:techrashad.03@gmail.com" target="_blank" class="email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-24" style="background: var(--grad-service);">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">What I <span class="text-orange-600">Do</span></h2>
+      <div class="w-24 h-1 bg-orange-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="zoom-in">
+        <i class="fas fa-laptop-code text-5xl text-orange-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Web Development</h3>
+        <p class="text-gray-600">Custom websites, E-commerce, Blog creation, WordPress plugins</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-palette text-5xl text-orange-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Graphic Design</h3>
+        <p class="text-gray-600">Logo, Poster, Banner, Business Card, Book Cover, Infographics</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-pen-fancy text-5xl text-orange-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Content Writing</h3>
+        <p class="text-gray-600">Educational content, Blog posts, Articles, Academic writing</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-video text-5xl text-orange-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Video Editing</h3>
+        <p class="text-gray-600">Promotional videos, Editing, Color grading</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-chart-line text-5xl text-orange-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Digital Marketing</h3>
+        <p class="text-gray-600">SEO, Facebook Ads, Google Ads, Social Media Management</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="zoom-in" data-aos-delay="500">
+        <i class="fas fa-chalkboard-user text-5xl text-orange-600 mb-4"></i>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Teaching & Tutoring</h3>
+        <p class="text-gray-600">Math, English, Islamic Studies, Web Design Courses</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications Section -->
+<section class="py-24 bg-white">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">Extra <span class="text-teal-600">Certifications</span></h2>
+      <div class="w-24 h-1 bg-teal-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-teal-600 hover-lift" data-aos="fade-right">
+        <div class="text-teal-600 font-bold mb-2">📅 2024</div>
+        <strong class="text-gray-800">Advanced Certificate Course in Computer Technology</strong>
+        <p class="text-gray-600 text-sm mt-1">Technical ICT Bangladesh</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-teal-600 hover-lift" data-aos="fade-left">
+        <div class="text-teal-600 font-bold mb-2">📅 2022</div>
+        <strong class="text-gray-800">Basic in Computer Office Applications</strong>
+        <p class="text-gray-600 text-sm mt-1">Technical ICT Bangladesh</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-teal-600 hover-lift" data-aos="fade-right">
+        <div class="text-teal-600 font-bold mb-2">📅 2022</div>
+        <strong class="text-gray-800">Fundamentals of Digital Marketing</strong>
+        <p class="text-gray-600 text-sm mt-1">Google Digital Garage</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-teal-600 hover-lift" data-aos="fade-left">
+        <div class="text-teal-600 font-bold mb-2">📅 2021</div>
+        <strong class="text-gray-800">Graphic Design Basic to Advanced</strong>
+        <p class="text-gray-600 text-sm mt-1">OT Academy, Dhaka, Bangladesh</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-teal-600 hover-lift" data-aos="fade-right">
+        <div class="text-teal-600 font-bold mb-2">📅 2020</div>
+        <strong class="text-gray-800">English Fundamentals to Advanced</strong>
+        <p class="text-gray-600 text-sm mt-1">King College, London (Online Course)</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 border-l-4 border-teal-600 hover-lift" data-aos="fade-left">
+        <div class="text-teal-600 font-bold mb-2">📅 2020</div>
+        <strong class="text-gray-800">Web Design & WordPress Theme Customization</strong>
+        <p class="text-gray-600 text-sm mt-1">Learning & Earning Development Project</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-24" style="background: var(--grad-project);">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-white">My <span class="text-blue-400">Projects</span></h2>
+      <div class="w-24 h-1 bg-blue-400 mx-auto mt-3 mb-8 rounded-full"></div>
+    </div>
+    
+    <div class="flex flex-wrap gap-3 justify-center mb-10" data-aos="fade-up">
+      <button class="filter-btn active px-5 py-2 bg-blue-600 text-white rounded-full text-sm" data-filter="all">All</button>
+      <button class="filter-btn px-5 py-2 bg-gray-700 text-white rounded-full text-sm hover:bg-blue-600 transition" data-filter="web">Web Projects</button>
+      <button class="filter-btn px-5 py-2 bg-gray-700 text-white rounded-full text-sm hover:bg-blue-600 transition" data-filter="graphic">Graphic Design</button>
+      <button class="filter-btn px-5 py-2 bg-gray-700 text-white rounded-full text-sm hover:bg-blue-600 transition" data-filter="writing">Writing</button>
+      <button class="filter-btn px-5 py-2 bg-gray-700 text-white rounded-full text-sm hover:bg-blue-600 transition" data-filter="video">WordPress Plugins</button>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsContainer"></div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section class="py-24 bg-gray-50">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">Work <span class="text-red-600">Experience</span></h2>
+      <div class="w-24 h-1 bg-red-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="max-w-3xl mx-auto">
+      <div class="relative border-l-4 border-red-600 ml-4">
+        <div class="mb-8 ml-6" data-aos="fade-left">
+          <div class="absolute w-4 h-4 bg-red-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;📊 Cluster Business Promoter</h3>
+          <p class="text-gray-600"><a href="https://awayscholarsbd.com/" target="_blank" class="text-red-600 hover:underline">Away Scholars</a>, Shewrapara, Dhaka | 2026 - Running</p>
+        </div>
+        <div class="mb-8 ml-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="absolute w-4 h-4 bg-red-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;👨‍🏫 Head Teacher</h3>
+          <p class="text-gray-600">Bornomala Kindergarten, Faridganj | 2026 - Running</p>
+        </div>
+        <div class="mb-8 ml-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="absolute w-4 h-4 bg-red-600 rounded-full -left-2.5 mt-1.5"></div>
+          <h3 class="text-xl font-bold text-gray-800"> &nbsp;&nbsp;👨‍🏫 Assistant Teacher (Math & English)</h3>
+          <p class="text-gray-600">Darussunnat Mojidiya Model Madrasah, Faridganj | 2021 - 2025</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hobbies Section -->
+<section class="py-24 bg-white">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-gray-800">Hobbies & <span class="text-pink-600">Interests</span></h2>
+      <div class="w-24 h-1 bg-pink-600 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in">
+        <i class="fas fa-book text-4xl text-pink-600 mb-3"></i>
+        <h3 class="font-bold text-gray-800">Writing</h3>
+        <p class="text-gray-600 text-sm">Educational books & learning materials</p>
+      </div>
+      <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fa-solid fa-fill-drip text-4xl text-pink-600 mb-3"></i>
+        <h3 class="font-bold text-gray-800">Design</h3>
+        <p class="text-gray-600 text-sm">Creative tools for productive purposes</p>
+      </div> 
+      <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-hand-holding-heart text-4xl text-pink-600 mb-3"></i>
+        <h3 class="font-bold text-gray-800">Helping</h3>
+        <p class="text-gray-600 text-sm">Community & family support</p>
+      </div>
+      <div class="text-center p-6 bg-gray-50 rounded-2xl hover-lift" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-globe text-4xl text-pink-600 mb-3"></i>
+        <h3 class="font-bold text-gray-800">Travel</h3>
+        <p class="text-gray-600 text-sm">Exploring new places & ideas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24" style="background: var(--grad-contact);">
+  <div class="container-custom mx-auto px-4">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-white">Get In <span class="text-blue-400">Touch</span></h2>
+      <div class="w-24 h-1 bg-blue-400 mx-auto mt-3 mb-12 rounded-full"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <div class="space-y-4" data-aos="fade-right">
+        <div class="flex items-center gap-4 text-white">
+          <i class="fas fa-phone text-2xl text-blue-400 w-10"></i>
+          <span>+8801679338669</span>
+        </div>
+        <div class="flex items-center gap-4 text-white">
+          <i class="fas fa-phone-alt text-2xl text-blue-400 w-10"></i>
+          <span>+8801746654369</span>
+        </div>
+        <div class="flex items-center gap-4 text-white">
+          <i class="fas fa-envelope text-2xl text-blue-400 w-10"></i>
+          <span>mdjoynalar@gmail.com</span>
+        </div>
+        <div class="flex items-center gap-4 text-white">
+          <i class="fas fa-map-marker-alt text-2xl text-blue-400 w-10"></i>
+          <span>Vantir Gaow, Faridgonj, Chandpur, Bangladesh</span>
+        </div>
+      </div>
+      
+      <form action="https://formspree.io/f/xblkkkjq" method="POST" class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 hover-lift" data-aos="fade-left">
+        <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 mb-4 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:border-blue-400">
+        <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 mb-4 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:border-blue-400">
+        <textarea name="message" rows="4" placeholder="Your Message" class="w-full px-4 py-3 mb-4 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:border-blue-400"></textarea>
+        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all hover-lift">Send Message</button>
+      </form>
+    </div>
+    
+    <div class="mt-12 rounded-2xl overflow-hidden" data-aos="zoom-in">
+      <iframe src="https://maps.google.com/maps?q=Faridganj%2C%20Chandpur%2C%20Bangladesh&t=&z=12&ie=UTF8&iwloc=&output=embed" class="w-full h-64 border-0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 bg-gray-900 text-center text-gray-400">
+  <div class="container-custom mx-auto px-4">
+    <p>© 2026 MD. Joynal Abedin. All Rights Reserved</p>
+    <div class="flex justify-center gap-6 mt-4 flex-wrap">
+      <a href="https://www.facebook.com/joynalar69" target="_blank" class="hover:text-blue-400 transition-all"><i class="fab fa-facebook text-xl"></i></a>
+      <a href="https://www.instagram.com/joynal.ar/" target="_blank" class="hover:text-pink-500 transition-all"><i class="fab fa-instagram text-xl"></i></a>
+      <a href="https://aragency1.blogspot.com/" target="_blank" class="hover:text-orange-500 transition-all"><i class="fab fa-blogger text-xl"></i></a>
+      <a href="https://github.com/joynalar69" target="_blank" class="hover:text-gray-400 transition-all"><i class="fab fa-github text-xl"></i></a>
+    </div>
+    <p class="text-sm mt-4 opacity-60">"Simple, Respectful, Purposeful Life Guided by Islamic Values"</p>
+  </div>
+</footer>
+
+<!-- Floating Elements -->
+<a href="https://wa.me/8801679338669" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<div class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({ 
+    duration: 800, 
+    once: false, 
+    mirror: false, 
+    offset: 100,
+    disable: false
+  });
+
+  // Typing Text Effect
+  const roles = ["Graphic Designer", "Web Designer", "Web Developer", "Digital Marketer", "Content Writer", "Video Editor"];
+  let idx = 0, charIdx = 0, isDeleting = false;
+  const typingSpan = document.getElementById("typing-text");
+
+  function typeEffect() {
+    if (!typingSpan) return;
+    const current = roles[idx];
+    if (isDeleting) {
+      typingSpan.innerText = current.substring(0, charIdx - 1);
+      charIdx--;
+    } else {
+      typingSpan.innerText = current.substring(0, charIdx + 1);
+      charIdx++;
+    }
+    
+    if (!isDeleting && charIdx === current.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 2000);
+      return;
+    }
+    
+    if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      idx = (idx + 1) % roles.length;
+      setTimeout(typeEffect, 500);
+      return;
+    }
+    
+    const speed = isDeleting ? 50 : 100;
+    setTimeout(typeEffect, speed);
+  }
+  typeEffect();
+
+  // Scroll Progress Bar
+  window.addEventListener("scroll", function() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById("scrollProgress");
+    if (progressBar) progressBar.style.width = scrolled + "%";
+    
+    const backBtn = document.getElementById("backToTop");
+    if (backBtn) {
+      if (winScroll > 300) backBtn.style.opacity = "1";
+      else backBtn.style.opacity = "0";
+    }
+  });
+  
+  const backToTop = document.getElementById("backToTop");
+  if (backToTop) {
+    backToTop.addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // Skill Progress Bars
+  const skillBars = document.querySelectorAll(".progress-bar");
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const targetWidth = bar.getAttribute("data-skill");
+        if (targetWidth) {
+          let width = 0;
+          const interval = setInterval(() => {
+            if (width >= parseInt(targetWidth)) {
+              clearInterval(interval);
+            } else {
+              width++;
+              bar.style.width = width + "%";
+            }
+          }, 15);
+        }
+        skillObserver.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.5 });
+  skillBars.forEach(bar => skillObserver.observe(bar));
+
+  // Projects Data
+  const projectsData = {
+    web: [
+      { name: "Basic Calculator", desc: "Simple calculator using JavaScript", demo: "https://joynalar69.github.io/Basic.calculator/" },
+      { name: "Advanced Calculator", desc: "Scientific calculator with memory functions", demo: "https://joynalar69.github.io/advanced.calculator/" },
+      { name: "Base Calculator", desc: "Number base conversion tool", demo: "https://joynalar69.github.io/base.calculator/" },
+      { name: "Study Timer", desc: "Productivity timer for students", demo: "https://joynalar69.github.io/study.timer/" },
+      { name: "3 Dot Game", desc: "Classic puzzle game", demo: "https://joynalar69.github.io/3dots/" },
+      { name: "Dot and Boxes Game", desc: "Strategic board game", demo: "https://joynalar69.github.io/dot.and.boxes/" },
+      { name: "Chess Game", desc: "Full chess implementation", demo: "https://joynalar69.github.io/chess/" },
+      { name: "FDMS", desc: "Fuel Distribution Management System", demo: "https://joynalar69.github.io/fdms/" },
+      { name: "Away Scholars", desc: "Study - Work - settle abroad platform", demo: "https://awayscholarsbd.com/" },
+      { name: "Nomani Voice", desc: "Islamic content management system", demo: "https://nomanivoice.blogspot.com/" }
+    ],
+    graphic: [
+      { name: "Logo Design Portfolio", desc: "Custom logo designs for brands", demo: "https://aragency1.blogspot.com/search/label/Logo%20Design?m=1" },
+      { name: "Poster & Banner Design", desc: "Event and marketing materials", demo: "https://aragency1.blogspot.com/2024/08/design-modern-eye-catching-poster-for.html" },
+      { name: "Business Card Designs", desc: "Professional card templates", demo: "https://aragency1.blogspot.com/2024/08/design-your-minimalistic-modern.html" },
+      { name: "Infographics Designs", desc: "Creative infographic designs", demo: "https://aragency1.blogspot.com/2024/08/design-minimalistic-infographics-for.html" }
+    ],
+    writing: [
+      { name: "Educational Books", desc: "Basic English E-book for beginners", demo: "https://drive.google.com/file/d/1kyJxFa6RjOD5KoMs-r57mmDHExjOppo0/view?usp=sharing" },
+      { name: "Blog Content", desc: "Tech and education articles", demo: "https://selflearning24.blogspot.com/" }
+    ],
+    video: [
+      { name: "Notice Board Pro", desc: "A powerful WordPress plugin for notices", demo: "https://www.awayscholarsbd.com/notice-board-2/" },
+      { name: "Event Calender Pro", desc: "A professional WordPress calendar plugin", demo: "https://www.awayscholarsbd.com/calendar/" }
+    ]
+  };
+
+  function renderProjects(filter) {
+    const container = document.getElementById('projectsContainer');
+    if (!container) return;
+    let projects = [];
+    if (filter === 'all') {
+      projects = [...projectsData.web, ...projectsData.graphic, ...projectsData.writing, ...projectsData.video];
+    } else {
+      projects = projectsData[filter] || [];
+    }
+    container.innerHTML = projects.map(proj => `
+      <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 hover-lift border border-white/20" data-aos="zoom-in">
+        <h3 class="text-xl font-bold text-white mb-2">${proj.name}</h3>
+        <p class="text-gray-300 text-sm mb-4">${proj.desc}</p>
+        <a href="${proj.demo}" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition">Live Demo →</a>
+      </div>
+    `).join('');
+    
+    setTimeout(() => AOS.refresh(), 100);
+  }
+  renderProjects('all');
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-blue-600', 'text-white');
+        b.classList.add('bg-gray-700');
+      });
+      this.classList.add('bg-blue-600', 'text-white');
+      this.classList.remove('bg-gray-700');
+      renderProjects(this.getAttribute('data-filter'));
+    });
+  });
+
+  // Contact Form
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contactForm);
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          alert('✓ Thank you! Your message has been sent successfully.');
+          contactForm.reset();
+        } else {
+          alert('✗ Oops! There was a problem. Please try again.');
+        }
+      } catch (error) {
+        alert('✗ Network error. Please check your connection.');
+      }
+    });
+  }
+</script>
+</body>
+</html>
